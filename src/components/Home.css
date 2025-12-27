@@ -1,0 +1,561 @@
+/* src/components/Home.css */
+
+:root {
+  --color-red: #ce1126;
+  --color-red-light: #ff1744;
+  --color-red-dark: #9b0d1f;
+  --color-green: #00703d;
+  --color-green-light: #009951;
+  --color-green-dark: #005030;
+  --color-white: #ffffff;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-600: #4b5563;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--color-gray-900);
+  line-height: 1.6;
+}
+
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 50%, var(--color-gray-50) 100%);
+}
+
+/* ========== Hero Section ========== */
+.hero-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-green) 100%);
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: var(--color-white);
+  padding: 2rem;
+  z-index: 10;
+}
+
+.logo-container {
+  margin-bottom: 2rem;
+}
+
+.logo-icon {
+  font-size: 5rem;
+  display: block;
+  margin-bottom: 1rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.brand-name {
+  font-size: 4.5rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.badge-coming {
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+  50% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+}
+
+/* ========== Mission Section ========== */
+.mission-section {
+  padding: 6rem 2rem;
+  background: var(--color-white);
+}
+
+.mission-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-red), var(--color-green));
+  margin: 1.5rem auto;
+  border-radius: 5px;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.mission-card {
+  background: var(--color-white);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.mission-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.mission-card:nth-child(1):hover {
+  border-color: var(--color-red);
+}
+
+.mission-card:nth-child(2):hover {
+  border-color: var(--color-green);
+}
+
+.mission-card:nth-child(3):hover {
+  border-color: var(--color-red);
+}
+
+.mission-icon {
+  font-size: 3.5rem;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.mission-icon.red {
+  background: linear-gradient(135deg, rgba(206, 17, 38, 0.1), rgba(206, 17, 38, 0.2));
+}
+
+.mission-icon.green {
+  background: linear-gradient(135deg, rgba(0, 112, 61, 0.1), rgba(0, 112, 61, 0.2));
+}
+
+.mission-card:hover .mission-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.mission-card h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--color-gray-900);
+}
+
+.mission-card p {
+  color: var(--color-gray-600);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* ========== Roles Section ========== */
+.roles-section {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+}
+
+.roles-header {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.roles-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-gray-600);
+  margin-top: 1rem;
+}
+
+.roles-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.role-card {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid transparent;
+}
+
+.role-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  transition: all 0.3s ease;
+}
+
+.role-card.red::before {
+  background: linear-gradient(90deg, var(--color-red), var(--color-red-light));
+}
+
+.role-card.green::before {
+  background: linear-gradient(90deg, var(--color-green), var(--color-green-light));
+}
+
+.role-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.role-card.red:hover {
+  border-color: var(--color-red);
+}
+
+.role-card.green:hover {
+  border-color: var(--color-green);
+}
+
+.role-card.active {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.role-card.red.active {
+  border-color: var(--color-red);
+  box-shadow: 0 12px 40px rgba(206, 17, 38, 0.3);
+}
+
+.role-card.green.active {
+  border-color: var(--color-green);
+  box-shadow: 0 12px 40px rgba(0, 112, 61, 0.3);
+}
+
+.role-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.role-icon {
+  font-size: 3rem;
+  transition: all 0.3s ease;
+}
+
+.role-card:hover .role-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.role-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  flex: 1;
+}
+
+.role-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  margin-bottom: 0;
+}
+
+.role-details.show {
+  max-height: 500px;
+  margin-bottom: 1.5rem;
+}
+
+.role-responsibilities,
+.role-skills {
+  margin-bottom: 1.5rem;
+}
+
+.role-responsibilities h4,
+.role-skills h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-gray-800);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.role-responsibilities ul {
+  list-style: none;
+  padding: 0;
+}
+
+.role-responsibilities li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--color-gray-600);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.role-responsibilities li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.role-card.red .role-responsibilities li::before {
+  color: var(--color-red);
+}
+
+.role-card.green .role-responsibilities li::before {
+  color: var(--color-green);
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: var(--color-gray-100);
+  color: var(--color-gray-700);
+  transition: all 0.2s ease;
+}
+
+.role-card.red .skill-tag {
+  background: rgba(206, 17, 38, 0.1);
+  color: var(--color-red-dark);
+}
+
+.role-card.green .skill-tag {
+  background: rgba(0, 112, 61, 0.1);
+  color: var(--color-green-dark);
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+}
+
+.role-action {
+  text-align: center;
+}
+
+.btn-select {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--color-white);
+  width: 100%;
+}
+
+.btn-select.red {
+  background: linear-gradient(135deg, var(--color-red), var(--color-red-light));
+}
+
+.btn-select.green {
+  background: linear-gradient(135deg, var(--color-green), var(--color-green-light));
+}
+
+.btn-select:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== CTA Section ========== */
+.cta-section {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-green) 100%);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  opacity: 0.95;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--color-white);
+  color: var(--color-red);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-white);
+  border: 3px solid var(--color-white);
+}
+
+.btn-secondary:hover {
+  background: var(--color-white);
+  color: var(--color-green);
+  transform: translateY(-5px);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .brand-name {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .roles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+
+  .cta-content p {
+    font-size: 1.2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 2.5rem;
+  }
+
+  .logo-icon {
+    font-size: 3.5rem;
+  }
+}
