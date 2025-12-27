@@ -1,6 +1,22 @@
-import React, { useState } from 'react';
-import { Search, MapPin, Trophy, Star, Filter, Grid, List, Eye, TrendingUp, Shield, Users as UsersIcon, Award, Target, Calendar } from 'lucide-react';
-import './UsersPage.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Search,
+  MapPin,
+  Trophy,
+  Star,
+  Filter,
+  Grid,
+  List,
+  Eye,
+  TrendingUp,
+  Shield,
+  Users as UsersIcon,
+  Award,
+  Target,
+  Calendar,
+} from "lucide-react";
+import "./UsersPage.css";
 
 interface User {
   id: number;
@@ -27,21 +43,22 @@ interface User {
 }
 
 const UsersPage: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [selectedPosition, setSelectedPosition] = useState('all');
-  const [selectedCountry, setSelectedCountry] = useState('all');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [selectedPosition, setSelectedPosition] = useState("all");
+  const [selectedCountry, setSelectedCountry] = useState("all");
 
   const users: User[] = [
     {
       id: 1,
-      name: 'Youssef El-Haddad',
-      arabicName: 'يوسف الحداد',
-      photo: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-      position: 'Attacking Midfielder',
+      name: "Youssef El-Haddad",
+      arabicName: "يوسف الحداد",
+      photo:
+        "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      position: "Attacking Midfielder",
       age: 19,
-      location: 'Casablanca',
-      country: 'Morocco',
+      location: "Casablanca",
+      country: "Morocco",
       rating: 4.8,
       aiScore: 92,
       verified: true,
@@ -49,22 +66,23 @@ const UsersPage: React.FC = () => {
       followers: 2500,
       posts: 24,
       videos: 12,
-      club: 'Raja CA Academy',
+      club: "Raja CA Academy",
       stats: {
         matches: 45,
         goals: 8,
-        assists: 12
-      }
+        assists: 12,
+      },
     },
     {
       id: 2,
-      name: 'Amine Benali',
-      arabicName: 'أمين بنعلي',
-      photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-      position: 'Striker',
+      name: "Amine Benali",
+      arabicName: "أمين بنعلي",
+      photo:
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      position: "Striker",
       age: 21,
-      location: 'Rabat',
-      country: 'Morocco',
+      location: "Rabat",
+      country: "Morocco",
       rating: 4.6,
       aiScore: 88,
       verified: true,
@@ -72,22 +90,23 @@ const UsersPage: React.FC = () => {
       followers: 1800,
       posts: 18,
       videos: 8,
-      club: 'AS FAR',
+      club: "AS FAR",
       stats: {
         matches: 38,
         goals: 15,
-        assists: 5
-      }
+        assists: 5,
+      },
     },
     {
       id: 3,
-      name: 'Mehdi Ziani',
-      arabicName: 'مهدي زياني',
-      photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-      position: 'Defensive Midfielder',
+      name: "Mehdi Ziani",
+      arabicName: "مهدي زياني",
+      photo:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      position: "Defensive Midfielder",
       age: 20,
-      location: 'Tangier',
-      country: 'Morocco',
+      location: "Tangier",
+      country: "Morocco",
       rating: 4.5,
       aiScore: 85,
       verified: true,
@@ -95,22 +114,23 @@ const UsersPage: React.FC = () => {
       followers: 1200,
       posts: 15,
       videos: 6,
-      club: 'IRT Tanger',
+      club: "IRT Tanger",
       stats: {
         matches: 42,
         goals: 3,
-        assists: 8
-      }
+        assists: 8,
+      },
     },
     {
       id: 4,
-      name: 'Karim Ouazzani',
-      arabicName: 'كريم الوزاني',
-      photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-      position: 'Center Back',
+      name: "Karim Ouazzani",
+      arabicName: "كريم الوزاني",
+      photo:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      position: "Center Back",
       age: 22,
-      location: 'Marrakech',
-      country: 'Morocco',
+      location: "Marrakech",
+      country: "Morocco",
       rating: 4.7,
       aiScore: 90,
       verified: true,
@@ -118,22 +138,23 @@ const UsersPage: React.FC = () => {
       followers: 2100,
       posts: 20,
       videos: 10,
-      club: 'KAC Marrakech',
+      club: "KAC Marrakech",
       stats: {
         matches: 50,
         goals: 4,
-        assists: 2
-      }
+        assists: 2,
+      },
     },
     {
       id: 5,
-      name: 'Reda Alami',
-      arabicName: 'رضا العلمي',
-      photo: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-      position: 'Winger',
+      name: "Reda Alami",
+      arabicName: "رضا العلمي",
+      photo:
+        "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      position: "Winger",
       age: 18,
-      location: 'Fès',
-      country: 'Morocco',
+      location: "Fès",
+      country: "Morocco",
       rating: 4.4,
       aiScore: 83,
       verified: false,
@@ -141,22 +162,23 @@ const UsersPage: React.FC = () => {
       followers: 950,
       posts: 12,
       videos: 5,
-      club: 'MAS Fès Academy',
+      club: "MAS Fès Academy",
       stats: {
         matches: 28,
         goals: 6,
-        assists: 9
-      }
+        assists: 9,
+      },
     },
     {
       id: 6,
-      name: 'Omar Benjelloun',
-      arabicName: 'عمر بنجلون',
-      photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-      position: 'Goalkeeper',
+      name: "Omar Benjelloun",
+      arabicName: "عمر بنجلون",
+      photo:
+        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      position: "Goalkeeper",
       age: 23,
-      location: 'Casablanca',
-      country: 'Morocco',
+      location: "Casablanca",
+      country: "Morocco",
       rating: 4.6,
       aiScore: 87,
       verified: true,
@@ -164,27 +186,32 @@ const UsersPage: React.FC = () => {
       followers: 1600,
       posts: 16,
       videos: 7,
-      club: 'Wydad AC',
+      club: "Wydad AC",
       stats: {
         matches: 35,
         goals: 0,
-        assists: 0
-      }
-    }
+        assists: 0,
+      },
+    },
   ];
 
-  const filteredUsers = users.filter(user => {
-    const matchesSearch = user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         user.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         user.position.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesPosition = selectedPosition === 'all' || user.position === selectedPosition;
-    const matchesCountry = selectedCountry === 'all' || user.country === selectedCountry;
-    
+  const filteredUsers = users.filter((user) => {
+    const matchesSearch =
+      user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      user.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      user.position.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesPosition =
+      selectedPosition === "all" || user.position === selectedPosition;
+    const matchesCountry =
+      selectedCountry === "all" || user.country === selectedCountry;
+
     return matchesSearch && matchesPosition && matchesCountry;
   });
 
+  const navigate = useNavigate();
+
   const handleViewProfile = (userId: number) => {
-    window.location.href = `/athlete`;
+    navigate("/athlete");
   };
 
   return (
@@ -194,7 +221,9 @@ const UsersPage: React.FC = () => {
         <div className="header-content">
           <div className="header-text">
             <h1>Joueurs & Talents</h1>
-            <p>Découvrez les talents émergents du football marocain et africain</p>
+            <p>
+              Découvrez les talents émergents du football marocain et africain
+            </p>
           </div>
           <div className="header-stats">
             <div className="stat-item">
@@ -207,7 +236,9 @@ const UsersPage: React.FC = () => {
             <div className="stat-item">
               <Trophy size={24} color="#00703d" />
               <div>
-                <div className="stat-value">{users.filter(u => u.verified).length}</div>
+                <div className="stat-value">
+                  {users.filter((u) => u.verified).length}
+                </div>
                 <div className="stat-label">Vérifiés</div>
               </div>
             </div>
@@ -228,8 +259,8 @@ const UsersPage: React.FC = () => {
         </div>
 
         <div className="filters">
-          <select 
-            value={selectedPosition} 
+          <select
+            value={selectedPosition}
             onChange={(e) => setSelectedPosition(e.target.value)}
             className="filter-select"
           >
@@ -242,8 +273,8 @@ const UsersPage: React.FC = () => {
             <option value="Striker">Attaquant</option>
           </select>
 
-          <select 
-            value={selectedCountry} 
+          <select
+            value={selectedCountry}
             onChange={(e) => setSelectedCountry(e.target.value)}
             className="filter-select"
           >
@@ -254,15 +285,15 @@ const UsersPage: React.FC = () => {
           </select>
 
           <div className="view-toggle">
-            <button 
-              className={viewMode === 'grid' ? 'active' : ''}
-              onClick={() => setViewMode('grid')}
+            <button
+              className={viewMode === "grid" ? "active" : ""}
+              onClick={() => setViewMode("grid")}
             >
               <Grid size={20} />
             </button>
-            <button 
-              className={viewMode === 'list' ? 'active' : ''}
-              onClick={() => setViewMode('list')}
+            <button
+              className={viewMode === "list" ? "active" : ""}
+              onClick={() => setViewMode("list")}
             >
               <List size={20} />
             </button>
@@ -272,7 +303,7 @@ const UsersPage: React.FC = () => {
 
       {/* Users Grid/List */}
       <div className={`users-container ${viewMode}`}>
-        {filteredUsers.map(user => (
+        {filteredUsers.map((user) => (
           <div key={user.id} className="user-card">
             <div className="user-card-header">
               <div className="user-photo-wrapper">
@@ -293,7 +324,7 @@ const UsersPage: React.FC = () => {
             <div className="user-card-body">
               <h3 className="user-name">{user.name}</h3>
               <p className="user-arabic-name">{user.arabicName}</p>
-              
+
               <div className="user-position">
                 <Trophy size={14} />
                 {user.position}
@@ -336,16 +367,19 @@ const UsersPage: React.FC = () => {
                 <div className="ai-score-label">AI Score</div>
                 <div className="ai-score-value">{user.aiScore}</div>
                 <div className="ai-score-bar">
-                  <div className="ai-score-fill" style={{ width: `${user.aiScore}%` }}></div>
+                  <div
+                    className="ai-score-fill"
+                    style={{ width: `${user.aiScore}%` }}
+                  ></div>
                 </div>
               </div>
 
               <div className="user-rating">
                 {[...Array(5)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    size={14} 
-                    fill={i < Math.floor(user.rating) ? '#f59f00' : 'none'}
+                  <Star
+                    key={i}
+                    size={14}
+                    fill={i < Math.floor(user.rating) ? "#f59f00" : "none"}
                     color="#f59f00"
                   />
                 ))}
@@ -362,13 +396,12 @@ const UsersPage: React.FC = () => {
             </div>
 
             <div className="user-card-footer">
-              <button 
+              <button
                 className="btn-view-profile"
                 onClick={() => handleViewProfile(user.id)}
               >
                 <Eye size={16} />
                 Voir le profil
-                
               </button>
             </div>
           </div>
